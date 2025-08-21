@@ -77,14 +77,20 @@ function addBook(title, author, pages, status, id) {
 
 addBookButton.addEventListener('click', (e) => {
     event.preventDefault()
-    const getTitle = document.querySelector('#title').value;
-    const getAuthor = document.querySelector('#author').value;
-    const getPages = document.querySelector('#pages').value;
-    const getStatus = document.querySelector('#reading-status').value;
-    const bookId = crypto.randomUUID();
+    const form = document.querySelector('.form')
+    if (form.checkValidity()) {
+        const getTitle = document.querySelector('#title').value;
+        const getAuthor = document.querySelector('#author').value;
+        const getPages = document.querySelector('#pages').value;
+        const getStatus = document.querySelector('#reading-status').value;
+        const bookId = crypto.randomUUID();
 
-    addBook(getTitle, getAuthor, getPages, getStatus, bookId);
-    document.querySelector('form').reset();
+        addBook(getTitle, getAuthor, getPages, getStatus, bookId);
+        form.reset();
+    } else {
+        // Trigger native validation UI
+        form.reportValidity();
+    }
 })
 
 document.body.addEventListener('click', (e) => {

@@ -26,14 +26,6 @@ function ifEmpty(){
     }
 }
 
-function CreateBook(title, author, pages, status, id) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.id = id;
-}
-
 function addBookToHtml(bookInfo){
     const body = document.querySelector('.body');
     const emptyBox = document.querySelector('.empty')
